@@ -7,7 +7,7 @@ module Throttle
     class RateLimitError < StandardError; end
 
     THROTTLE_WINDOW = 5 # seconds
-    THROTTLE_REQUEST_COUNT = 5
+    THROTTLE_REQUEST_COUNT = 5 # requests per window
 
     @semaphore = Mutex.new
     @queues = {}
@@ -39,9 +39,7 @@ module Throttle
   end
 
   def fingerprint
-    @fingerprint ||= begin
-      seed = request.remote_ip + request.user_agent
-      Digest::SHA1.hexdigest seed
-    end
+    seed = request.remote_ip + request.user_agent
+    Digest::SHA1.hexdigest seed
   end
 end
