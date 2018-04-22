@@ -2,6 +2,7 @@ class HomeController < ApplicationController
   include Throttleable
 
   def index
-    render plain: self.class.queues.inspect
+    Rails.logger.info self.class.queues.inspect
+    render plain: 'ok'
   end
 end
