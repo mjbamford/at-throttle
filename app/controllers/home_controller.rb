@@ -1,8 +1,8 @@
 class HomeController < ApplicationController
   include Throttleable
+  before_action :throttle, only: :index
 
   def index
-    Rails.logger.info self.class.queues.inspect
     render plain: 'ok'
   end
 end
