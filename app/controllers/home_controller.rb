@@ -1,5 +1,5 @@
 class HomeController < ApplicationController
-  include Throttle
+  include Throttleable
 
   def index
     render plain: self.class.queues.inspect

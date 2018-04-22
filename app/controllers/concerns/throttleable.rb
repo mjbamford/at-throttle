@@ -1,6 +1,6 @@
 require 'digest/sha1'
 
-module Throttle
+module Throttleable
   extend ActiveSupport::Concern
 
   included do
