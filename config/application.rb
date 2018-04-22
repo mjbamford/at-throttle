@@ -29,5 +29,11 @@ module Airtasker
 
     # Don't generate system test files.
     config.generators.system_tests = nil
+
+    # Request throttle period in seconds
+    config.throttle_window = ENV['THROTTLE_WINDOW'].to_f
+
+    # Requests per throttle period
+    config.throttle_request_count = ENV['THROTTLE_REQUEST_COUNT'].to_i
   end
 end
